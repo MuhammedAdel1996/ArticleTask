@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ArticleTask.Models.Article>
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+<h2>Articles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form action="Articles">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="validationDefault01">Category</label>
+                @Html.DropDownList("categoryid", (SelectList)@ViewBag.categories,"select one", new { @class = "form-control" })
+
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Save" class="btn btn-success" />
+</form>
+<table class="table">
+    <tr>
+
+        <th>
+            CategoryName
+        </th>
+        <th>
+            Article Title
+        </th>
+        <th>
+            ArticleBody
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleCategory.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.body)
+            </td>
+            <td>
+                @Html.ActionLink("Addcomment", "Addcomment", new { id = item.id }) |
+                @Html.ActionLink("ShowComments", "comments", new { id = item.id }) 
+
+
+            </td>
+           
+        </tr>
+    }
+
+</table>

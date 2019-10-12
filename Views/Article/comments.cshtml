@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ArticleTask.Models.Comments>
+
+@{
+    ViewBag.Title = "comments";
+}
+
+<h2>comments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Article.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Article.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comment)
+        </td>
+      
+    </tr>
+}
+
+</table>
